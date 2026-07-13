@@ -5,3 +5,9 @@ A backend and API for a learning record store with Python and FastAPI
 ```bash
 uv run fastapi dev src/lrs/main.py
 ```
+
+# Testing
+
+```bash
+uv run pytest
+```
