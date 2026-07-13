@@ -1,6 +1,8 @@
-def main():
-    print("Hello from ll-lrs!")
+from fastapi import FastAPI
+
+app = FastAPI(title="LL - Learning Record Store")
 
 
-if __name__ == "__main__":
-    main()
+@app.get("/health")
+def health():
+    return {"status": "ok"}
