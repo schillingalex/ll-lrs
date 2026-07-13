@@ -4,4 +4,6 @@ version = "0.1.0"
 description = "A backend and API for a learning record store with Python and FastAPI"
 readme = "README.md"
 requires-python = ">=3.13"
-dependencies = []
+dependencies = [
+    "fastapi[standard]>=0.139.0",
+]
