@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 
-app = FastAPI(title="LL - Learning Record Store")
+app = FastAPI(title="JLL - Learning Record Store")
 
 
 @app.get("/health")
