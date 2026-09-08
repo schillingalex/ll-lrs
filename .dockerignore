@@ -1,6 +1,9 @@
+_learning-by-doing
 __pycache__
+.pytest_cache
 .idea
 .venv
 .git
 .gitignore
 .DS_Store
+test/
