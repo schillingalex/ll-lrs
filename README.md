@@ -1,4 +1,4 @@
-A backend and API for a learning record store with Python and FastAPI
+An adaptive curriculum and learner-state service for a language-learning game, built with Python and FastAPI.
 
 # Usage
 
