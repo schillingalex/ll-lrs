@@ -24,6 +24,14 @@ which should return `{"status": "ok"}`.
 Docker Compose is used to start the entire stack, i.e., the API and all the backend
 services required to run it, such as PostgreSQL.
 
+Validate the configuration via:
+
+```bash
+docker compose config
+```
+
+Bring up the entire stack:
+
 ```bash
 docker compose up -d
 ```
@@ -32,7 +40,7 @@ Check that the API and PostgreSQL services are running (should list two containe
 the PostgreSQL container should report "healthy" under status):
 
 ```bash
-docker ps
+docker compose ps
 ```
 
 Inspect the logs of individual services through `docker compose logs <service>`, e.g.:
