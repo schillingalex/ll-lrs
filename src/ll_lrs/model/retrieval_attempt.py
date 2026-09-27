@@ -17,14 +17,13 @@ class RetrievalAttemptRequest(BaseModel):
     # e.g., hiragana_a
     item_id: str
     # Version of the item, mostly expected to be 1, but possibly relevant later.
-    item_version: PositiveInt = 1
+    item_version: PositiveInt
 
     # e.g., recognition or production
     knowledge_component: KnowledgeComponent
 
     # Date and time (with timezone information) when the attempt was made.
-    # Has to be in the past (<= now).
-    timestamp: Annotated[AwareDatetime, Field(le=datetime.now())]
+    timestamp: AwareDatetime
 
     # milliseconds
     response_time: NonNegativeInt
