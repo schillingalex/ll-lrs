@@ -1,6 +1,4 @@
-from datetime import datetime
-from typing import Annotated
-from pydantic import AwareDatetime, BaseModel, Field, NonNegativeInt, PositiveInt
+from pydantic import AwareDatetime, BaseModel, NonNegativeInt, PositiveInt
 
 from .knowledge_component import KnowledgeComponent
 
