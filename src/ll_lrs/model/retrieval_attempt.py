@@ -1,4 +1,4 @@
-from pydantic import AwareDatetime, BaseModel, NonNegativeInt, PositiveInt
+from pydantic import AwareDatetime, BaseModel, NonNegativeInt, PositiveInt, Field
 
 from .knowledge_component import KnowledgeComponent
 
@@ -13,7 +13,7 @@ class RetrievalAttemptRequest(BaseModel):
     learner_id: int
 
     # e.g., hiragana_a
-    item_id: str
+    item_id: str = Field(max_length=128)
     # Version of the item, mostly expected to be 1, but possibly relevant later.
     item_version: PositiveInt
 
@@ -33,7 +33,7 @@ class RetrievalAttemptRequest(BaseModel):
     # ID of the item associated with the selected answer.
     # If correct = true, item_id == answer_item_id.
     # For freely typed answered, this will be None and only raw_answer is filled.
-    answer_item_id: str | None = None
+    answer_item_id: str | None = Field(default=None, max_length=128)
 
     # Correctness is not necessarily defined as a simple string equality.
     # In case of freely-typed answers, we can accept typos up to a certain threshold,
