@@ -1,6 +1,8 @@
+from datetime import datetime
 import os
 
-from sqlalchemy import URL
+from sqlalchemy import URL, BIGINT, TIMESTAMP, String
+from sqlalchemy.orm import DeclarativeBase
 
 
 def create_db_url_from_env() -> URL:
@@ -20,5 +22,13 @@ def create_db_url_from_env() -> URL:
         username=os.environ["POSTGRES_USER"],
         password=os.environ["POSTGRES_PASSWORD"],
         host=os.environ["POSTGRES_HOST"],
+        port=int(os.environ["POSTGRES_PORT"]),
         database=os.environ["POSTGRES_DB"],
     )
+
+
+class Base(DeclarativeBase):
+    type_annotation_map = {
+        datetime: TIMESTAMP(timezone=True),
+        str: String(),
+    }
