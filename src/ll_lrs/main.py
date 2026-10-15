@@ -1,23 +1,17 @@
 from contextlib import asynccontextmanager
-import os
 
 from fastapi import FastAPI, HTTPException
-from sqlalchemy import create_engine, URL, text
+from sqlalchemy import create_engine, text
 from sqlalchemy.exc import OperationalError
 from starlette import status
 from starlette.requests import Request
 
+from ll_lrs.database import create_db_url_from_env
+
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
-    engine_url = URL.create(
-        "postgresql+psycopg",
-        username=os.environ["POSTGRES_USER"],
-        password=os.environ["POSTGRES_PASSWORD"],
-        host=os.environ["POSTGRES_HOST"],
-        database=os.environ["POSTGRES_DB"],
-    )
-    db = create_engine(engine_url)
+    db = create_engine(create_db_url_from_env())
     app.state.db = db
 
     yield
