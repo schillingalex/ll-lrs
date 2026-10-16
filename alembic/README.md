@@ -16,3 +16,9 @@ file to override the required values for host-to-container connection.
 ```bash
 uv run --env-file .env --env-file .env.host alembic revision --autogenerate -m retrieval_attempt
 ```
+
+## Migrate to the latest revision
+
+```bash
+uv run --env-file .env --env-file .env.host alembic upgrade head
+```
