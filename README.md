@@ -1,5 +1,9 @@
 An adaptive curriculum and learner-state service for a language-learning game, built with Python and FastAPI.
 
+# Setup
+
+For preparing the database, refer to `alembic/README.md`.
+
 # Usage
 
 ## Docker

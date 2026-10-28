@@ -1,6 +1,6 @@
 from datetime import datetime
 
-from sqlalchemy import String, BigInteger
+from sqlalchemy import String, BigInteger, CheckConstraint
 from sqlalchemy.orm import mapped_column, Mapped
 
 from ll_lrs.database import Base
@@ -8,6 +8,10 @@ from ll_lrs.database import Base
 
 class RetrievalAttempt(Base):
     __tablename__ = "retrieval_attempts"
+    __table_args__ = (
+        CheckConstraint("item_version > 0", name="ck_retrieval_attempts_item_version_positive"),
+        CheckConstraint("response_time >= 0", name="ck_retrieval_attempts_response_time_nonnegative"),
+    )
 
     id: Mapped[int] = mapped_column(BigInteger, primary_key=True)
     learner_id: Mapped[int]

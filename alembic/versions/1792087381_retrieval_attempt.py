@@ -31,6 +31,8 @@ def upgrade() -> None:
         sa.Column('raw_answer', sa.String(), nullable=False),
         sa.Column('answer_item_id', sa.String(length=128), nullable=True),
         sa.Column('correct', sa.Boolean(), nullable=False),
+        sa.CheckConstraint('item_version > 0', name='ck_retrieval_attempts_item_version_positive'),
+        sa.CheckConstraint('response_time >= 0', name='ck_retrieval_attempts_response_time_nonnegative'),
         sa.PrimaryKeyConstraint('id')
     )
 

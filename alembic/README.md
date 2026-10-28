@@ -2,6 +2,8 @@
 
 ## Auto-generate Revision
 
+> Autogeneration only works if the database container is running.
+
 Based on having a .env file (template in .env.example) and .env.host, which should contain the
 configurations to get from the host machine into the db container, e.g.:
 
@@ -21,4 +23,18 @@ uv run --env-file .env --env-file .env.host alembic revision --autogenerate -m r
 
 ```bash
 uv run --env-file .env --env-file .env.host alembic upgrade head
+```
+
+## Downgrade to Revision
+
+Target revision is `base` in this case, i.e., before everything.
+
+```bash
+uv run --env-file .env --env-file .env.host alembic downgrade base
+```
+
+## Checking the Status of a Table
+
+```bash
+docker compose exec db sh -c 'psql -d "$POSTGRES_DB" -U "$POSTGRES_USER" -w -c "SELECT * FROM retrieval_attempts"'
 ```
