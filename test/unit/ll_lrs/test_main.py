@@ -10,6 +10,7 @@ from ll_lrs.main import app
 @pytest.fixture
 def client(monkeypatch):
     monkeypatch.setenv("POSTGRES_HOST", "db")
+    monkeypatch.setenv("POSTGRES_PORT", "5432")
     monkeypatch.setenv("POSTGRES_DB", "ll")
     monkeypatch.setenv("POSTGRES_USER", "user")
     monkeypatch.setenv("POSTGRES_PASSWORD", "pw")
